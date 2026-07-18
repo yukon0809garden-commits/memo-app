@@ -1,0 +1,3 @@
+venv/
+memo.db
+__pycache__/

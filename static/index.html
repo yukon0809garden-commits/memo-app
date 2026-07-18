@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メモアプリ</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>メモアプリ</h1>
+    </header>
+
+    <main>
+        <!-- メモ入力フォーム -->
+        <section class="form-section">
+            <h2>メモの作成・編集</h2>
+            <form id="memo-form">
+                <div class="form-group">
+                    <label for="memo-title">タイトル</label>
+                    <input type="text" id="memo-title" placeholder="タイトルを入力">
+                </div>
+                <div class="form-group">
+                    <label for="memo-body">本文</label>
+                    <textarea id="memo-body" rows="5" placeholder="本文を入力"></textarea>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" id="btn-create">作成</button>
+                    <button type="button" id="btn-update" disabled>更新</button>
+                    <button type="button" id="btn-delete" disabled>削除</button>
+                    <button type="button" id="btn-cancel" class="btn-secondary">キャンセル</button>
+                </div>
+            </form>
+            <input type="hidden" id="memo-id">
+        </section>
+
+        <!-- メモ一覧 -->
+        <section class="list-section">
+            <h2>メモ一覧</h2>
+            <div id="memo-list">
+                <!-- ここに JavaScript でメモが表示される -->
+                <p class="empty-message">メモがまだありません。上のフォームから作成してみましょう。</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
