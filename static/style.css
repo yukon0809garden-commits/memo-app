@@ -10,6 +10,7 @@ body {
     background-color: #f5f5f5;
     color: #333;
     line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* === ヘッダー === */
@@ -17,10 +18,22 @@ header {
     background-color: #2c3e50;
     color: white;
     padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header h1 {
     font-size: 1.4rem;
+}
+
+#btn-dark-mode {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+#btn-dark-mode:hover {
+    background-color: rgba(255, 255, 255, 0.25);
 }
 
 /* === メインコンテンツ === */
@@ -37,6 +50,7 @@ section {
     padding: 24px;
     margin-bottom: 24px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 section h2 {
@@ -48,6 +62,7 @@ section h2 {
 /* === フォーム === */
 .form-group {
     margin-bottom: 16px;
+    position: relative;
 }
 
 .form-group label {
@@ -72,6 +87,15 @@ section h2 {
     outline: none;
     border-color: #3498db;
     box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* === 文字数カウント === */
+.char-count {
+    display: block;
+    text-align: right;
+    font-size: 0.75rem;
+    color: #999;
+    margin-top: 4px;
 }
 
 /* === ボタン === */
@@ -137,7 +161,16 @@ button:disabled {
     border-radius: 4px;
     margin-bottom: 8px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, opacity 0.3s ease, transform 0.3s ease;
+
+    /* フェードイン初期状態 */
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+.memo-card.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .memo-card:hover {
@@ -169,9 +202,108 @@ button:disabled {
     margin-top: 8px;
 }
 
+.memo-category {
+    display: inline-block;
+    background-color: #eaf2f8;
+    color: #2980b9;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-bottom: 6px;
+}
+
 /* === 空メッセージ === */
 .empty-message {
     text-align: center;
     color: #999;
     padding: 32px 0;
+}
+
+/* === 編集モーダル === */
+dialog#edit-dialog {
+    border: none;
+    border-radius: 8px;
+    padding: 24px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+dialog#edit-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+dialog#edit-dialog h2 {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    color: #2c3e50;
+}
+
+/* === ダークモード === */
+body.dark {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark header {
+    background-color: #111;
+}
+
+body.dark section {
+    background-color: #2a2a2a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+body.dark section h2 {
+    color: #e0e0e0;
+}
+
+body.dark .form-group input[type="text"],
+body.dark .form-group textarea {
+    background-color: #333;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+body.dark .form-group input[type="text"]:focus,
+body.dark .form-group textarea:focus {
+    border-color: #3498db;
+}
+
+body.dark .memo-card {
+    border-color: #3a3a3a;
+}
+
+body.dark .memo-card:hover {
+    background-color: #333;
+}
+
+body.dark .memo-card h3 {
+    color: #f0f0f0;
+}
+
+body.dark .memo-card p {
+    color: #bbb;
+}
+
+body.dark .memo-card .memo-date {
+    color: #888;
+}
+
+body.dark .memo-category {
+    background-color: #1f3a4d;
+    color: #6ab0e0;
+}
+
+body.dark .empty-message {
+    color: #777;
+}
+
+body.dark dialog#edit-dialog {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+}
+
+body.dark dialog#edit-dialog h2 {
+    color: #e0e0e0;
 }
